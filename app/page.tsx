@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 
 interface Session {
   id: number
+  host: string
   date: string
   time: string
   total_spots: number
@@ -74,10 +75,11 @@ export default function Home() {
 
   async function fetchSessions() {
     try {
-      // Fetch all sessions ordered by date (soonest first)
+      // Fetch Bill's sessions ordered by date (soonest first)
       const { data: sessionsData, error: sessionsError } = await supabase
         .from('sessions')
         .select('*')
+        .eq('host', 'bill')
         .order('date', { ascending: true })
 
       if (sessionsError) {
@@ -134,6 +136,7 @@ export default function Home() {
       .from('sessions')
       .insert([
         {
+          host: 'bill',
           date: sessionDate,
           time: sessionTime,
           total_spots: sessionSpots,
@@ -305,7 +308,7 @@ export default function Home() {
             CLAREMONT PICKLEBALL
           </h1>
           <div className="text-gray-600 text-lg md:text-xl animate-slideIn" style={{ animationDelay: '0.1s' }}>
-            Weekly Signup
+            Bill's Sessions
           </div>
         </header>
 
@@ -454,12 +457,22 @@ export default function Home() {
                     </div>
                   )}
 
-                  <div className="flex justify-end">
+                  <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
                     <button
                       onClick={() => deleteSession(session.id)}
                       className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-court-green hover:text-white transition-all"
                     >
                       Delete Session
+                    </button>
+                    <button
+                      onClick={() => {
+                        const link = `${window.location.origin}/session/${session.id}`
+                        navigator.clipboard.writeText(link)
+                        alert(`✓ Link copied!\n\n${link}\n\nShare this with backup players.`)
+                      }}
+                      className="px-6 py-2 bg-court-green text-white rounded-lg hover:bg-green-600 transition-all font-medium"
+                    >
+                      📋 Share Link
                     </button>
                   </div>
                 </div>
