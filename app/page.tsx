@@ -346,16 +346,16 @@ export default function Home() {
                   </div>
 
                   {/* Share Link Button */}
-                  <div className="mb-6 md:mb-8">
+                  <div className="mb-6 md:mb-8 flex justify-end">
                     <button
                       onClick={() => {
                         const link = `${window.location.origin}/session/${session.id}`
                         navigator.clipboard.writeText(link)
                         alert(`✓ Link copied!\n\n${link}\n\nShare this with backup players.`)
                       }}
-                      className="w-full px-6 py-3 bg-court-green text-white rounded-lg hover:bg-green-600 transition-all font-semibold text-center"
+                      className="px-4 py-2 bg-court-green text-white rounded-lg hover:bg-green-600 transition-all font-medium text-sm"
                     >
-                      📋 Share Link for Backup Players
+                      📋 Share
                     </button>
                   </div>
 
