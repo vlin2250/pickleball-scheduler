@@ -345,6 +345,20 @@ export default function Home() {
                     </div>
                   </div>
 
+                  {/* Share Link Button */}
+                  <div className="mb-6 md:mb-8 flex justify-end">
+                    <button
+                      onClick={() => {
+                        const link = `${window.location.origin}/session/${session.id}`
+                        navigator.clipboard.writeText(link)
+                        alert(`✓ Link copied!\n\n${link}\n\nShare this with backup players.`)
+                      }}
+                      className="px-4 py-2 bg-court-green text-white rounded-lg hover:bg-green-600 transition-all font-medium text-sm"
+                    >
+                      📋 Share
+                    </button>
+                  </div>
+
                   <div className="bg-white p-4 md:p-6 rounded-xl mb-6 md:mb-8 border border-border-color">
                     <form onSubmit={(e) => handleSignup(session.id, e)} className="mb-4">
                       <label className="block mb-2 text-gray-600 text-sm uppercase tracking-wide font-medium">
@@ -457,22 +471,12 @@ export default function Home() {
                     </div>
                   )}
 
-                  <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
+                  <div className="flex justify-start">
                     <button
                       onClick={() => deleteSession(session.id)}
-                      className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-court-green hover:text-white transition-all"
+                      className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-accent-orange hover:text-white transition-all"
                     >
                       Delete Session
-                    </button>
-                    <button
-                      onClick={() => {
-                        const link = `${window.location.origin}/session/${session.id}`
-                        navigator.clipboard.writeText(link)
-                        alert(`✓ Link copied!\n\n${link}\n\nShare this with backup players.`)
-                      }}
-                      className="px-6 py-2 bg-court-green text-white rounded-lg hover:bg-green-600 transition-all font-medium"
-                    >
-                      📋 Share Link
                     </button>
                   </div>
                 </div>
