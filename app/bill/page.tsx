@@ -307,7 +307,7 @@ export default function Home() {
           <h1 className="font-['Bebas_Neue'] text-4xl md:text-7xl tracking-wide bg-gradient-to-r from-court-green to-green-400 bg-clip-text text-transparent mb-2 animate-slideIn">
             CLAREMONT PICKLEBALL
           </h1>
-          <div className="text-gray-600 text-lg md:text-xl animate-slideIn" style={{ animationDelay: '0.1s' }}>
+          <div className="font-['Bebas_Neue'] text-3xl md:text-5xl tracking-wide text-gray-800 animate-slideIn" style={{ animationDelay: '0.1s' }}>
             Bill's Sessions
           </div>
         </header>
